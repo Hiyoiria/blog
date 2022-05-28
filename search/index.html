@@ -6,15 +6,13 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="HandheldFriendly" content="True">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
-    <meta name="description" content="Hello, I am IRIA! 你好，我是IRIA！ こんにちは  IRIAちゃん です  ଘ(੭ˊᵕˋ)੭* ੈ✩‧₊˚ ੈ✩‧₊˚ ੈ✩‧₊˚ ੈ✩‧₊˚ - HUST (华中科技大学) 传播学 计算机双学位 大三在读 CJOIER (长郡中学) 前信息竞赛选手 CATTI备考中 语言爱好者 计划读研中 不知道有没有学上orz - 由于目前未能建立满意的标签系统 因此做了一个简单的分类 专">
-<meta property="og:type" content="website">
-<meta property="og:title" content="about">
-<meta property="og:url" content="https://hiyoiria.github.io/blog/about/index.html">
+    <meta property="og:type" content="website">
+<meta property="og:title" content="Search">
+<meta property="og:url" content="https://hiyoiria.github.io/blog/search/index.html">
 <meta property="og:site_name" content="IRIA&#39;s reflektor">
-<meta property="og:description" content="Hello, I am IRIA! 你好，我是IRIA！ こんにちは  IRIAちゃん です  ଘ(੭ˊᵕˋ)੭* ੈ✩‧₊˚ ੈ✩‧₊˚ ੈ✩‧₊˚ ੈ✩‧₊˚ - HUST (华中科技大学) 传播学 计算机双学位 大三在读 CJOIER (长郡中学) 前信息竞赛选手 CATTI备考中 语言爱好者 计划读研中 不知道有没有学上orz - 由于目前未能建立满意的标签系统 因此做了一个简单的分类 专">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2022-05-28T14:26:16.000Z">
-<meta property="article:modified_time" content="2022-05-28T15:49:10.501Z">
+<meta property="article:published_time" content="2022-05-28T15:54:02.115Z">
+<meta property="article:modified_time" content="2022-05-28T15:54:02.115Z">
 <meta property="article:author" content="Hiyoiria">
 <meta name="twitter:card" content="summary">
     
@@ -36,7 +34,7 @@
       
     
     <!-- title -->
-    <title>about</title>
+    <title>Search</title>
     <!-- styles -->
     
 <link rel="stylesheet" href="/blog/css/style.css">
@@ -99,31 +97,15 @@
 
   <div class="content" itemprop="articleBody">
       
-          <p>Hello, I am IRIA!</p>
-<p>你好，我是IRIA！</p>
-<p>こんにちは  IRIAちゃん です</p>
-<p> ଘ(੭ˊᵕˋ)੭* ੈ✩‧₊˚ ੈ✩‧₊˚ ੈ✩‧₊˚ ੈ✩‧₊˚</p>
-<p>-</p>
-<p>HUST (华中科技大学) 传播学 计算机双学位 大三在读</p>
-<p>CJOIER (长郡中学) 前信息竞赛选手</p>
-<p>CATTI备考中 语言爱好者</p>
-<p>计划读研中 不知道有没有学上orz</p>
-<p>-</p>
-<p>由于目前未能建立满意的标签系统 因此做了一个简单的分类</p>
-<p>专业学习与学术实践  请戳-&gt; <a href='https://hiyoiria.github.io/blog/links/'>其实并没有很学术</a></p>
-<p>影像与动画制作练习 请戳-&gt; <a href='https://hiyoiria.github.io/blog/links/'>我爱AE！！！！！</a></p>
-<p>书籍音乐与播客记录 请戳-&gt; <a href='https://hiyoiria.github.io/blog/links/'>知识王国施工中✧*</a></p>
-<p>日常迷思与未成形脱口秀 请戳-&gt;<a href='https://hiyoiria.github.io/blog/links/'>为什么多出来两个字啊</a></p>
-<p>-</p>
-<p>争取消极自由 拥抱积极自由</p>
-<p>愛と感謝は大切な🧡</p>
-<p>-</p>
-<blockquote>
-<p>  本站于2022年5月进行了一次较大的迁移和整合 留下过记录但不方便转移的平台在<a href='https://hiyoiria.github.io/blog/links/'>友链</a>页面可见</p>
-<p>  有任何交流的想法 欢迎随时通过邮箱联系：<a href="mailto:&#x69;&#x72;&#105;&#97;&#110;&#x62;&#x6f;&#119;&#x40;&#49;&#54;&#x33;&#x2e;&#x63;&#111;&#109;">&#x69;&#x72;&#105;&#97;&#110;&#x62;&#x6f;&#119;&#x40;&#49;&#54;&#x33;&#x2e;&#x63;&#111;&#109;</a></p>
-</blockquote>
+        <section id="search">
+  <form>
+    <input type="text" class="search-input" id="search-input" placeholder="Search...">
+  </form>
+  <div id="search-result"></div>
+  <p class="search-no-result">No results found.</p>
+</section>
 
-        
+      
   </div>
 </article>
 
@@ -176,6 +158,45 @@
 <script src="/blog/js/main.js"></script>
 
 <!-- search -->
+
+  
+<script src="/blog/js/search.js"></script>
+
+  <script type="text/javascript">
+  $(function() {
+
+    var $inputArea = $("input#search-input");
+    var $resultArea = document.querySelector("div#search-result");
+
+    $inputArea.focus(function() {
+      var search_path = "search.xml";
+      if (search_path.length == 0) {
+        search_path = "search.xml";
+      }
+      var path = "/blog/" + search_path;
+      searchFunc(path, 'search-input', 'search-result');
+    });
+
+    $inputArea.keydown(function(e) {
+      if (e.which == 13) {
+        e.preventDefault();
+      }
+    });
+
+    var observer = new MutationObserver(function(mutationsList, observer) {
+      if (mutationsList.length == 1) {
+        if (mutationsList[0].addedNodes.length) {
+          $(".search-no-result").hide();
+        } else if (mutationsList[0].removedNodes.length) {
+          $(".search-no-result").show(200);
+        }
+      }
+    });
+
+    observer.observe($resultArea, { childList: true });
+
+  });
+  </script>
 
 <!-- Google Analytics -->
 
