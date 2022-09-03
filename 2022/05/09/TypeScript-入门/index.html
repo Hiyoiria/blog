@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang=en>
+<head>
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
+    <meta name="description" content="TS是什么TypeScript 是一种由微软开发的自由和开源的编程语言。它是 JavaScript 的一个超集，而且本质上向这个语言添加了可选的静态类型和基于类的面向对象编程。 既然提到了JS，那不得不呈现以下与JS的区别：  二者在实际使用上的区别：  JavaScript 非常适合更简单的应用程序，因为它可以在所有平台（跨平台）上运行并且非常轻量级。另外，与JS的最小开销相比，编译TS代码需要">
+<meta property="og:type" content="article">
+<meta property="og:title" content="TypeScript 入门">
+<meta property="og:url" content="https://hiyoiria.github.io/blog/2022/05/09/TypeScript-%E5%85%A5%E9%97%A8/index.html">
+<meta property="og:site_name" content="IRIA&#39;s reflektor">
+<meta property="og:description" content="TS是什么TypeScript 是一种由微软开发的自由和开源的编程语言。它是 JavaScript 的一个超集，而且本质上向这个语言添加了可选的静态类型和基于类的面向对象编程。 既然提到了JS，那不得不呈现以下与JS的区别：  二者在实际使用上的区别：  JavaScript 非常适合更简单的应用程序，因为它可以在所有平台（跨平台）上运行并且非常轻量级。另外，与JS的最小开销相比，编译TS代码需要">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/hiyoiria/Blogimage@main/img/image-20220902210027953.png">
+<meta property="og:image" content="c:/Users/Hiyoiria/AppData/Roaming/Typora/typora-user-images/image-20220902210851178.png">
+<meta property="article:published_time" content="2022-05-09T02:25:42.000Z">
+<meta property="article:modified_time" content="2022-09-03T13:19:17.505Z">
+<meta property="article:author" content="Hiyoiria">
+<meta property="article:tag" content="Tech">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/hiyoiria/Blogimage@main/img/image-20220902210027953.png">
+    
+    
+      
+        
+          <link rel="shortcut icon" href="/blog/images/myicon.ico">
+        
+      
+      
+        
+          <link rel="icon" type="image/png" href="/blog/images/myicon-192x192.png" sizes="192x192">
+        
+      
+      
+        
+          <link rel="apple-touch-icon" sizes="180x180" href="/blog/images/apple-touch-myicon.png">
+        
+      
+    
+    <!-- title -->
+    <title>TypeScript 入门</title>
+    <!-- styles -->
+    
+<link rel="stylesheet" href="/blog/css/style.css">
+
+    <!-- persian styles -->
+    
+    <!-- rss -->
+    
+    
+      <link rel="alternate" href="/blog/true" title="IRIA&#39;s reflektor" type="application/atom+xml" />
+    
+	<!-- mathjax -->
+	
+		<script type="text/x-mathjax-config">
+		  MathJax.Hub.Config({
+			tex2jax: {
+			  skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+			  inlineMath: [['$','$']]
+			}
+		  });
+		</script>
+		<script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-MML-AM_CHTML' async></script>
+	
+<meta name="generator" content="Hexo 6.2.0"></head>
+
+<body class="max-width mx-auto px3 ltr">
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#" aria-label="Menu"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#" aria-label="Menu"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" aria-label="Top" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fas fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+        <!--
+       --><li><a href="/blog/">Home</a></li><!--
+     --><!--
+       --><li><a href="/blog/about/">About</a></li><!--
+     --><!--
+       --><li><a href="/blog/archives/">Archives</a></li><!--
+     --><!--
+       --><li><a href="/blog/links/">Links</a></li><!--
+     --><!--
+       --><li><a href="/blog/search/">Search</a></li><!--
+     -->
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        <li><a class="icon" aria-label="Previous post" href="/blog/2022/05/11/Vue%E7%9A%842%E4%B8%8E3/"><i class="fas fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
+        
+        
+        <li><a class="icon" aria-label="Next post" href="/blog/2022/05/06/%E6%88%91%E7%9A%84Vscode%E9%85%8D%E7%BD%AE/"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" aria-label="Back to top" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" aria-label="Share post" href="#"><i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">Previous post</span>
+      <span id="i-next" class="info" style="display:none;">Next post</span>
+      <span id="i-top" class="info" style="display:none;">Back to top</span>
+      <span id="i-share" class="info" style="display:none;">Share post</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=https://hiyoiria.github.io/blog/2022/05/09/TypeScript-%E5%85%A5%E9%97%A8/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=https://hiyoiria.github.io/blog/2022/05/09/TypeScript-%E5%85%A5%E9%97%A8/&text=TypeScript 入门"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=https://hiyoiria.github.io/blog/2022/05/09/TypeScript-%E5%85%A5%E9%97%A8/&title=TypeScript 入门"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=https://hiyoiria.github.io/blog/2022/05/09/TypeScript-%E5%85%A5%E9%97%A8/&is_video=false&description=TypeScript 入门"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=TypeScript 入门&body=Check out this article: https://hiyoiria.github.io/blog/2022/05/09/TypeScript-%E5%85%A5%E9%97%A8/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=https://hiyoiria.github.io/blog/2022/05/09/TypeScript-%E5%85%A5%E9%97%A8/&title=TypeScript 入门"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=https://hiyoiria.github.io/blog/2022/05/09/TypeScript-%E5%85%A5%E9%97%A8/&title=TypeScript 入门"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=https://hiyoiria.github.io/blog/2022/05/09/TypeScript-%E5%85%A5%E9%97%A8/&title=TypeScript 入门"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=https://hiyoiria.github.io/blog/2022/05/09/TypeScript-%E5%85%A5%E9%97%A8/&title=TypeScript 入门"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=https://hiyoiria.github.io/blog/2022/05/09/TypeScript-%E5%85%A5%E9%97%A8/&name=TypeScript 入门&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=https://hiyoiria.github.io/blog/2022/05/09/TypeScript-%E5%85%A5%E9%97%A8/&t=TypeScript 入门"><i class="fab fa-hacker-news " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    <div id="toc">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#TS%E6%98%AF%E4%BB%80%E4%B9%88"><span class="toc-number">1.</span> <span class="toc-text">TS是什么</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#TS%E4%BD%BF%E7%94%A8"><span class="toc-number">2.</span> <span class="toc-text">TS使用</span></a></li></ol>
+    </div>
+  </span>
+</div>
+
+    
+    <div class="content index py4">
+        
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle" itemprop="name headline">
+        TypeScript 入门
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span itemprop="name">Hiyoiria</span>
+      </span>
+      
+    <div class="postdate">
+      
+        <time datetime="2022-05-09T02:25:42.000Z" itemprop="datePublished">2022-05-09</time>
+        
+      
+    </div>
+
+
+      
+
+      
+    <div class="article-tag">
+        <i class="fas fa-tag"></i>
+        <a class="tag-link-link" href="/blog/tags/Tech/" rel="tag">Tech</a>
+    </div>
+
+
+    </div>
+  </header>
+  
+
+  <div class="content" itemprop="articleBody">
+    <h2 id="TS是什么"><a href="#TS是什么" class="headerlink" title="TS是什么"></a>TS是什么</h2><p>TypeScript 是一种由微软开发的自由和开源的编程语言。它是 JavaScript 的一个超集，而且本质上向这个语言添加了可选的静态类型和基于类的面向对象编程。</p>
+<p>既然提到了JS，那不得不呈现以下与JS的区别：</p>
+<p><img src="https://cdn.jsdelivr.net/gh/hiyoiria/Blogimage@main/img/image-20220902210027953.png" alt="image-20220902210027953"></p>
+<p>二者在实际使用上的区别：</p>
+<ul>
+<li><p>JavaScript 非常适合更简单的应用程序，因为它可以在所有平台（跨平台）上运行并且非常轻量级。另外，与JS的最小开销相比，编译TS代码需要的时间和CPU资源对项目而言会更麻烦。</p>
+</li>
+<li><p>但TS 使代码重构变得更加容易，并且更强调显式类型，使开发人员能够掌握各种组件的交互方式。由于它支持编译时调试，对于处理大型复杂应用程序的团队来说，有一定的好处。</p>
+</li>
+</ul>
+<h2 id="TS使用"><a href="#TS使用" class="headerlink" title="TS使用"></a>TS使用</h2><p><strong>安装</strong></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install -g typescript</span><br></pre></td></tr></table></figure>
+
+<p><strong>编译</strong></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">tsc helloworld.ts</span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">helloworld.ts =&gt; helloworld.js</span></span><br></pre></td></tr></table></figure>
+
+<p>编译案例</p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">greet</span>(<span class="params">person: <span class="built_in">string</span></span>) &#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="string">&#x27;Hello, &#x27;</span> + person;</span><br><span class="line">&#125;</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title function_">greet</span>(<span class="string">&quot;TypeScript&quot;</span>));</span><br></pre></td></tr></table></figure>
+
+<p>执行 <code>tsc hello.ts</code> 命令，之后会生成一个编译好的文件 <code>hello.js</code>：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&quot;use strict&quot;</span>;</span><br><span class="line"><span class="keyword">function</span> <span class="title function_">greet</span>(<span class="params">person</span>) &#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="string">&#x27;Hello, &#x27;</span> + person;</span><br><span class="line">&#125;</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title function_">greet</span>(<span class="string">&quot;TypeScript&quot;</span>));</span><br></pre></td></tr></table></figure>
+
+<p><strong>变量</strong></p>
+<p>严格的变量声明</p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> <span class="attr">name2</span>:<span class="built_in">string</span> = <span class="string">&quot;shasha&quot;</span>; <span class="comment">// 不能给字符串类型变量赋值数字</span></span><br><span class="line"><span class="keyword">var</span> alias3 = <span class="string">&#x27;xx&#x27;</span>; </span><br><span class="line">alias3 = <span class="number">13</span>;  <span class="comment">// 推断机制，第一次赋值的类型就是默认变量类型</span></span><br><span class="line"><span class="keyword">var</span> <span class="attr">alias4</span>:<span class="built_in">any</span> = <span class="string">&#x27;xixix&#x27;</span>  <span class="comment">// any的含义是可以给变量赋值任何值</span></span><br><span class="line">alias4 = <span class="number">14</span>;</span><br></pre></td></tr></table></figure>
+
+<p><strong>语法</strong></p>
+<p>TypeScript支持与JavaScript几乎相同的数据类型，此外还提供了实用的枚举类型方便我们使用。</p>
+<p>enum 类型是对 JavaScript 标准数据类型的一个补充。使用枚举类型可以为一组<code>数值</code>赋予名字&#96;。</p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">enum</span> <span class="title class_">Color</span> &#123;</span><br><span class="line">  <span class="title class_">Red</span>,</span><br><span class="line">  <span class="title class_">Green</span>,</span><br><span class="line">  <span class="title class_">Blue</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 枚举数值默认从0开始依次递增</span></span><br><span class="line"><span class="comment">// 根据特定的名称得到对应的枚举数值</span></span><br><span class="line"><span class="keyword">let</span> <span class="attr">myColor</span>: <span class="title class_">Color</span> = <span class="title class_">Color</span>.<span class="property">Green</span>  <span class="comment">// 0</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(myColor, <span class="title class_">Color</span>.<span class="property">Red</span>, <span class="title class_">Color</span>.<span class="property">Blue</span>)</span><br></pre></td></tr></table></figure>
+
+<p>枚举类型提供的一个便利是你可以由枚举的值得到它的名字。例如，我们知道数值为 2，但是不确定它映射到 Color 里的哪个名字，可以查找相应的名字</p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">enum</span> <span class="title class_">Color</span> &#123;<span class="title class_">Red</span> = <span class="number">1</span>, <span class="title class_">Green</span>, <span class="title class_">Blue</span>&#125;</span><br><span class="line"><span class="keyword">let</span> <span class="attr">colorName</span>: <span class="built_in">string</span> = <span class="title class_">Color</span>[<span class="number">2</span>]</span><br><span class="line"></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(colorName)  <span class="comment">// &#x27;Green&#x27;</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>函数</strong></p>
+<img src="C:\Users\Hiyoiria\AppData\Roaming\Typora\typora-user-images\image-20220902210851178.png" alt="image-20220902210851178" style="zoom: 67%;" />
+
+<p>三点运算符</p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//用来声明任意数量的方法参数</span></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">fun1</span>(<span class="params">...args</span>)&#123;</span><br><span class="line">    args.<span class="title function_">forEach</span>(<span class="keyword">function</span>(<span class="params">arg</span>)&#123;</span><br><span class="line">        <span class="variable language_">console</span>.<span class="title function_">log</span>(arg)</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;</span><br><span class="line"><span class="title function_">fun1</span>(<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>);</span><br><span class="line"><span class="title function_">fun1</span>(<span class="number">8</span>,<span class="number">9</span>,<span class="number">10</span>)</span><br></pre></td></tr></table></figure>
+
+<p><strong>面向对象</strong></p>
+<p>其实这一部分倒是和Java很像，不得不说可能TS比JS更”Java”~</p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Greeter</span> &#123;</span><br><span class="line">  <span class="comment">// 静态属性</span></span><br><span class="line">  <span class="keyword">static</span> <span class="attr">cname</span>: <span class="built_in">string</span> = <span class="string">&quot;Greeter&quot;</span>;</span><br><span class="line">  <span class="comment">// 成员属性</span></span><br><span class="line">  <span class="attr">greeting</span>: <span class="built_in">string</span>;</span><br><span class="line">  <span class="comment">// 构造函数 - 执行初始化操作</span></span><br><span class="line">  <span class="title function_">constructor</span>(<span class="params">message: <span class="built_in">string</span></span>) &#123;</span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">greeting</span> = message;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="comment">// 静态方法</span></span><br><span class="line">  <span class="keyword">static</span> <span class="title function_">getClassName</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="string">&quot;Class name is Greeter&quot;</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="comment">// 成员方法</span></span><br><span class="line">  <span class="title function_">greet</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="string">&quot;Hello, &quot;</span> + <span class="variable language_">this</span>.<span class="property">greeting</span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">let</span> greeter = <span class="keyword">new</span> <span class="title class_">Greeter</span>(<span class="string">&quot;world&quot;</span>);</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p><strong>模块化</strong></p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable language_">module</span> <span class="title class_">Validation</span> &#123;   <span class="comment">//定义模块</span></span><br><span class="line">  <span class="keyword">export</span> <span class="keyword">interface</span> <span class="title class_">StringValidator</span> &#123;  <span class="comment">//声明接口对外部可以使用</span></span><br><span class="line">    <span class="title function_">isAcceptable</span>(<span class="attr">s</span>: <span class="built_in">string</span>): <span class="built_in">boolean</span>;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">var</span> lettersRegexp = <span class="regexp">/^[A-Za-z]+$/</span>;</span><br><span class="line">  <span class="keyword">var</span> numberRegexp = <span class="regexp">/^[0-9]+$/</span>;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">export</span> <span class="keyword">class</span> <span class="title class_">LettersOnlyValidator</span> <span class="keyword">implements</span> <span class="title class_">StringValidator</span> &#123;  <span class="comment">//声明类对外部可用</span></span><br><span class="line">    <span class="title function_">isAcceptable</span>(<span class="params">s: <span class="built_in">string</span></span>) &#123;</span><br><span class="line">      <span class="keyword">return</span> lettersRegexp.<span class="title function_">test</span>(s);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">export</span> <span class="keyword">class</span> <span class="title class_">ZipCodeValidator</span> <span class="keyword">implements</span> <span class="title class_">StringValidator</span> &#123;</span><br><span class="line">    <span class="title function_">isAcceptable</span>(<span class="params">s: <span class="built_in">string</span></span>) &#123;</span><br><span class="line">      <span class="keyword">return</span> s.<span class="property">length</span> === <span class="number">5</span> &amp;&amp; numberRegexp.<span class="title function_">test</span>(s);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<hr>
+<p>参考：<a target="_blank" rel="noopener" href="https://blog.csdn.net/gao511147456/article/details/125809525">https://blog.csdn.net/gao511147456/article/details/125809525</a></p>
+<p><a target="_blank" rel="noopener" href="http://semlinker.com/ts-comprehensive-tutorial/">了不起的 TypeScript 入门教程</a></p>
+
+  </div>
+</article>
+
+
+
+        
+          <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/blog/">Home</a></li>
+         
+          <li><a href="/blog/about/">About</a></li>
+         
+          <li><a href="/blog/archives/">Archives</a></li>
+         
+          <li><a href="/blog/links/">Links</a></li>
+         
+          <li><a href="/blog/search/">Search</a></li>
+        
+      </ul>
+    </div>
+
+    <div id="toc-footer" style="display: none">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#TS%E6%98%AF%E4%BB%80%E4%B9%88"><span class="toc-number">1.</span> <span class="toc-text">TS是什么</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#TS%E4%BD%BF%E7%94%A8"><span class="toc-number">2.</span> <span class="toc-text">TS使用</span></a></li></ol>
+    </div>
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=https://hiyoiria.github.io/blog/2022/05/09/TypeScript-%E5%85%A5%E9%97%A8/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=https://hiyoiria.github.io/blog/2022/05/09/TypeScript-%E5%85%A5%E9%97%A8/&text=TypeScript 入门"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=https://hiyoiria.github.io/blog/2022/05/09/TypeScript-%E5%85%A5%E9%97%A8/&title=TypeScript 入门"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=https://hiyoiria.github.io/blog/2022/05/09/TypeScript-%E5%85%A5%E9%97%A8/&is_video=false&description=TypeScript 入门"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=TypeScript 入门&body=Check out this article: https://hiyoiria.github.io/blog/2022/05/09/TypeScript-%E5%85%A5%E9%97%A8/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=https://hiyoiria.github.io/blog/2022/05/09/TypeScript-%E5%85%A5%E9%97%A8/&title=TypeScript 入门"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=https://hiyoiria.github.io/blog/2022/05/09/TypeScript-%E5%85%A5%E9%97%A8/&title=TypeScript 入门"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=https://hiyoiria.github.io/blog/2022/05/09/TypeScript-%E5%85%A5%E9%97%A8/&title=TypeScript 入门"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=https://hiyoiria.github.io/blog/2022/05/09/TypeScript-%E5%85%A5%E9%97%A8/&title=TypeScript 入门"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=https://hiyoiria.github.io/blog/2022/05/09/TypeScript-%E5%85%A5%E9%97%A8/&name=TypeScript 入门&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=https://hiyoiria.github.io/blog/2022/05/09/TypeScript-%E5%85%A5%E9%97%A8/&t=TypeScript 入门"><i class="fab fa-hacker-news fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fas fa-bars fa-lg" aria-hidden="true"></i> Menu</a>
+        <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fas fa-list fa-lg" aria-hidden="true"></i> TOC</a>
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fas fa-share-alt fa-lg" aria-hidden="true"></i> Share</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a>
+    </div>
+
+  </div>
+</div>
+
+        
+        <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy;
+    
+    
+    2017-2022
+    Hiyoiria
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+        <!--
+       --><li><a href="/blog/">Home</a></li><!--
+     --><!--
+       --><li><a href="/blog/about/">About</a></li><!--
+     --><!--
+       --><li><a href="/blog/archives/">Archives</a></li><!--
+     --><!--
+       --><li><a href="/blog/links/">Links</a></li><!--
+     --><!--
+       --><li><a href="/blog/search/">Search</a></li><!--
+     -->
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+    </div>
+    <!-- styles -->
+
+
+
+  <link rel="preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" crossorigin="anonymous" onload="this.onload=null;this.rel='stylesheet'"/>
+
+
+    <!-- jquery -->
+ 
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" crossorigin="anonymous"></script> 
+
+
+
+
+<!-- clipboard -->
+
+  
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.7/clipboard.min.js" crossorigin="anonymous"></script> 
+  
+  <script type="text/javascript">
+  $(function() {
+    // copy-btn HTML
+    var btn = "<span class=\"btn-copy tooltipped tooltipped-sw\" aria-label=\"Copy to clipboard!\">";
+    btn += '<i class="far fa-clone"></i>';
+    btn += '</span>'; 
+    // mount it!
+    $(".highlight table").before(btn);
+    var clip = new ClipboardJS('.btn-copy', {
+      text: function(trigger) {
+        return Array.from(trigger.nextElementSibling.querySelectorAll('.code')).reduce((str,it)=>str+it.innerText+'\n','')
+      }
+    });
+    clip.on('success', function(e) {
+      e.trigger.setAttribute('aria-label', "Copied!");
+      e.clearSelection();
+    })
+  })
+  </script>
+
+
+<script src="/blog/js/main.js"></script>
+
+<!-- search -->
+
+<!-- Google Analytics -->
+
+<!-- Baidu Analytics -->
+
+<!-- Cloudflare Analytics -->
+
+<!-- Umami Analytics -->
+
+<!-- Disqus Comments -->
+
+<!-- utterances Comments -->
+
+</body>
+</html>
