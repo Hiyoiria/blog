@@ -6,15 +6,15 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="HandheldFriendly" content="True">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
-    <meta name="description" content="一些感觉没必要自己单开一篇来写的生活小技巧（bushi  Github项目管理逻辑Dev&#x2F;Test&#x2F;Pro的分支逻辑 冲突的解决方式-简单 响应式布局技巧响应式思路 px、em、rem、%、vw、vh、vm的区别 Flex布局有很多示意图的讲解 属性讲得比较清楚">
+    <meta name="description" content="一些感觉没必要自己单开一篇来写的生活小技巧（bushi  Github项目管理逻辑Dev&#x2F;Test&#x2F;Pro的分支逻辑 冲突的解决方式-简单 响应式布局技巧响应式思路 px、em、rem、%、vw、vh、vm的区别 Flex布局有很多示意图的讲解 属性讲得比较清楚 v-if 与 v-showv-if：在设置v-if的时候元素是没有被渲染出来的 v-show v-show是将">
 <meta property="og:type" content="article">
 <meta property="og:title" content="前端の杂七杂八">
 <meta property="og:url" content="https://hiyoiria.github.io/blog/2022/05/15/%E5%89%8D%E7%AB%AF%E3%81%AE%E6%9D%82%E4%B8%83%E6%9D%82%E5%85%AB/index.html">
 <meta property="og:site_name" content="IRIA&#39;s reflektor">
-<meta property="og:description" content="一些感觉没必要自己单开一篇来写的生活小技巧（bushi  Github项目管理逻辑Dev&#x2F;Test&#x2F;Pro的分支逻辑 冲突的解决方式-简单 响应式布局技巧响应式思路 px、em、rem、%、vw、vh、vm的区别 Flex布局有很多示意图的讲解 属性讲得比较清楚">
+<meta property="og:description" content="一些感觉没必要自己单开一篇来写的生活小技巧（bushi  Github项目管理逻辑Dev&#x2F;Test&#x2F;Pro的分支逻辑 冲突的解决方式-简单 响应式布局技巧响应式思路 px、em、rem、%、vw、vh、vm的区别 Flex布局有很多示意图的讲解 属性讲得比较清楚 v-if 与 v-showv-if：在设置v-if的时候元素是没有被渲染出来的 v-show v-show是将">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2022-05-15T08:48:13.000Z">
-<meta property="article:modified_time" content="2022-08-30T05:28:47.230Z">
+<meta property="article:modified_time" content="2022-09-04T13:09:51.785Z">
 <meta property="article:author" content="Hiyoiria">
 <meta property="article:tag" content="Tech">
 <meta name="twitter:card" content="summary">
@@ -120,7 +120,7 @@
 
     </div>
     <div id="toc">
-      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Github%E9%A1%B9%E7%9B%AE%E7%AE%A1%E7%90%86%E9%80%BB%E8%BE%91"><span class="toc-number">1.</span> <span class="toc-text">Github项目管理逻辑</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%93%8D%E5%BA%94%E5%BC%8F%E5%B8%83%E5%B1%80%E6%8A%80%E5%B7%A7"><span class="toc-number">2.</span> <span class="toc-text">响应式布局技巧</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Flex%E5%B8%83%E5%B1%80"><span class="toc-number">3.</span> <span class="toc-text">Flex布局</span></a></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Github%E9%A1%B9%E7%9B%AE%E7%AE%A1%E7%90%86%E9%80%BB%E8%BE%91"><span class="toc-number">1.</span> <span class="toc-text">Github项目管理逻辑</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%93%8D%E5%BA%94%E5%BC%8F%E5%B8%83%E5%B1%80%E6%8A%80%E5%B7%A7"><span class="toc-number">2.</span> <span class="toc-text">响应式布局技巧</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Flex%E5%B8%83%E5%B1%80"><span class="toc-number">3.</span> <span class="toc-text">Flex布局</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#v-if-%E4%B8%8E-v-show"><span class="toc-number">4.</span> <span class="toc-text">v-if 与 v-show</span></a></li></ol>
     </div>
   </span>
 </div>
@@ -173,6 +173,11 @@
 <p><a target="_blank" rel="noopener" href="https://blog.csdn.net/Ldajiangyou/article/details/124005833">px、em、rem、%、vw、vh、vm的区别</a></p>
 <h2 id="Flex布局"><a href="#Flex布局" class="headerlink" title="Flex布局"></a>Flex布局</h2><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/scorpion_V/article/details/125563670">有很多示意图的讲解</a></p>
 <p><a target="_blank" rel="noopener" href="https://segmentfault.com/a/1190000021883911">属性讲得比较清楚</a></p>
+<h2 id="v-if-与-v-show"><a href="#v-if-与-v-show" class="headerlink" title="v-if 与 v-show"></a>v-if 与 v-show</h2><p><strong>v-if</strong>：在设置v-if的时候元素是没有被渲染出来的</p>
+<p><strong>v-show</strong> v-show是将元素先渲染出来，只是设置为display:none，通过样式对元素进行显示和隐藏</p>
+<p>v-show是通过设置元素的css样式的display：none来显示隐藏，元素之后编译一次</p>
+<p>而v-if是在true时加载元素，false时删除元素</p>
+<p>所以v-if切换时比较消耗性能，但第一次加载快；</p>
 
   </div>
 </article>
@@ -200,7 +205,7 @@
     </div>
 
     <div id="toc-footer" style="display: none">
-      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Github%E9%A1%B9%E7%9B%AE%E7%AE%A1%E7%90%86%E9%80%BB%E8%BE%91"><span class="toc-number">1.</span> <span class="toc-text">Github项目管理逻辑</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%93%8D%E5%BA%94%E5%BC%8F%E5%B8%83%E5%B1%80%E6%8A%80%E5%B7%A7"><span class="toc-number">2.</span> <span class="toc-text">响应式布局技巧</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Flex%E5%B8%83%E5%B1%80"><span class="toc-number">3.</span> <span class="toc-text">Flex布局</span></a></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Github%E9%A1%B9%E7%9B%AE%E7%AE%A1%E7%90%86%E9%80%BB%E8%BE%91"><span class="toc-number">1.</span> <span class="toc-text">Github项目管理逻辑</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%93%8D%E5%BA%94%E5%BC%8F%E5%B8%83%E5%B1%80%E6%8A%80%E5%B7%A7"><span class="toc-number">2.</span> <span class="toc-text">响应式布局技巧</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Flex%E5%B8%83%E5%B1%80"><span class="toc-number">3.</span> <span class="toc-text">Flex布局</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#v-if-%E4%B8%8E-v-show"><span class="toc-number">4.</span> <span class="toc-text">v-if 与 v-show</span></a></li></ol>
     </div>
 
     <div id="share-footer" style="display: none">
