@@ -14,7 +14,7 @@
 <meta property="og:description" content="一些感觉没必要自己单开一篇来写的生活小技巧（bushi  Github项目管理逻辑Dev&#x2F;Test&#x2F;Pro的分支逻辑 冲突的解决方式-简单 响应式布局技巧响应式思路 px、em、rem、%、vw、vh、vm的区别 Flex布局有很多示意图的讲解 属性讲得比较清楚 v-if 与 v-showv-if：在设置v-if的时候元素是没有被渲染出来的 v-show v-show是将">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2022-05-15T08:48:13.000Z">
-<meta property="article:modified_time" content="2022-09-04T13:09:51.785Z">
+<meta property="article:modified_time" content="2022-09-06T12:23:56.613Z">
 <meta property="article:author" content="Hiyoiria">
 <meta property="article:tag" content="Tech">
 <meta name="twitter:card" content="summary">
@@ -120,7 +120,7 @@
 
     </div>
     <div id="toc">
-      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Github%E9%A1%B9%E7%9B%AE%E7%AE%A1%E7%90%86%E9%80%BB%E8%BE%91"><span class="toc-number">1.</span> <span class="toc-text">Github项目管理逻辑</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%93%8D%E5%BA%94%E5%BC%8F%E5%B8%83%E5%B1%80%E6%8A%80%E5%B7%A7"><span class="toc-number">2.</span> <span class="toc-text">响应式布局技巧</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Flex%E5%B8%83%E5%B1%80"><span class="toc-number">3.</span> <span class="toc-text">Flex布局</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#v-if-%E4%B8%8E-v-show"><span class="toc-number">4.</span> <span class="toc-text">v-if 与 v-show</span></a></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Github%E9%A1%B9%E7%9B%AE%E7%AE%A1%E7%90%86%E9%80%BB%E8%BE%91"><span class="toc-number">1.</span> <span class="toc-text">Github项目管理逻辑</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%93%8D%E5%BA%94%E5%BC%8F%E5%B8%83%E5%B1%80%E6%8A%80%E5%B7%A7"><span class="toc-number">2.</span> <span class="toc-text">响应式布局技巧</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Flex%E5%B8%83%E5%B1%80"><span class="toc-number">3.</span> <span class="toc-text">Flex布局</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#v-if-%E4%B8%8E-v-show"><span class="toc-number">4.</span> <span class="toc-text">v-if 与 v-show</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%A7%84%E8%8C%83%E4%B9%A6%E5%86%99"><span class="toc-number">5.</span> <span class="toc-text">规范书写</span></a></li></ol>
     </div>
   </span>
 </div>
@@ -178,6 +178,13 @@
 <p>v-show是通过设置元素的css样式的display：none来显示隐藏，元素之后编译一次</p>
 <p>而v-if是在true时加载元素，false时删除元素</p>
 <p>所以v-if切换时比较消耗性能，但第一次加载快；</p>
+<h2 id="规范书写"><a href="#规范书写" class="headerlink" title="规范书写"></a>规范书写</h2><p><strong>css规范</strong></p>
+<ol>
+<li>布局定位属性：display &#x2F; position &#x2F; float &#x2F; clear &#x2F; visibility &#x2F; overflow</li>
+<li>自身属性：width &#x2F; height &#x2F; margin &#x2F; padding &#x2F; border &#x2F; background</li>
+<li>文本属性：color &#x2F; font &#x2F; text-decoration &#x2F; text-align &#x2F; vertical-align &#x2F; white- space &#x2F; break-word</li>
+<li>其他属性（CSS3）：content &#x2F; cursor &#x2F; border-radius &#x2F; box-shadow &#x2F; text-shadow &#x2F; background:linear-gradient …</li>
+</ol>
 
   </div>
 </article>
@@ -205,7 +212,7 @@
     </div>
 
     <div id="toc-footer" style="display: none">
-      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Github%E9%A1%B9%E7%9B%AE%E7%AE%A1%E7%90%86%E9%80%BB%E8%BE%91"><span class="toc-number">1.</span> <span class="toc-text">Github项目管理逻辑</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%93%8D%E5%BA%94%E5%BC%8F%E5%B8%83%E5%B1%80%E6%8A%80%E5%B7%A7"><span class="toc-number">2.</span> <span class="toc-text">响应式布局技巧</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Flex%E5%B8%83%E5%B1%80"><span class="toc-number">3.</span> <span class="toc-text">Flex布局</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#v-if-%E4%B8%8E-v-show"><span class="toc-number">4.</span> <span class="toc-text">v-if 与 v-show</span></a></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Github%E9%A1%B9%E7%9B%AE%E7%AE%A1%E7%90%86%E9%80%BB%E8%BE%91"><span class="toc-number">1.</span> <span class="toc-text">Github项目管理逻辑</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%93%8D%E5%BA%94%E5%BC%8F%E5%B8%83%E5%B1%80%E6%8A%80%E5%B7%A7"><span class="toc-number">2.</span> <span class="toc-text">响应式布局技巧</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Flex%E5%B8%83%E5%B1%80"><span class="toc-number">3.</span> <span class="toc-text">Flex布局</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#v-if-%E4%B8%8E-v-show"><span class="toc-number">4.</span> <span class="toc-text">v-if 与 v-show</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%A7%84%E8%8C%83%E4%B9%A6%E5%86%99"><span class="toc-number">5.</span> <span class="toc-text">规范书写</span></a></li></ol>
     </div>
 
     <div id="share-footer" style="display: none">
