@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang=en>
+<head>
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
+    <meta name="description" content="Jupyter相关如何切环境看到有用代码激活环境啥的 但是最后实测是在conda的面板处，在当前要使用的环境下安装Jupyter，就能得到一个例如Jupyter(Pytorch)的选项 一些快捷键执行cell Ctrl + Enter: 执行该单元格的代码  Shift + Enter: 执行该单元格代码，并跳到下方单元格，如果下方没有单元格则新建一个单元格  Alt+ Enter: 执行该单元格">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Conda宇宙">
+<meta property="og:url" content="https://hiyoiria.github.io/blog/2022/10/29/Conda%E5%AE%87%E5%AE%99/index.html">
+<meta property="og:site_name" content="IRIA&#39;s reflektor">
+<meta property="og:description" content="Jupyter相关如何切环境看到有用代码激活环境啥的 但是最后实测是在conda的面板处，在当前要使用的环境下安装Jupyter，就能得到一个例如Jupyter(Pytorch)的选项 一些快捷键执行cell Ctrl + Enter: 执行该单元格的代码  Shift + Enter: 执行该单元格代码，并跳到下方单元格，如果下方没有单元格则新建一个单元格  Alt+ Enter: 执行该单元格">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2022-10-30T02:25:49.000Z">
+<meta property="article:modified_time" content="2024-12-18T22:53:31.160Z">
+<meta property="article:author" content="Hiyoiria">
+<meta name="twitter:card" content="summary">
+    
+    
+      
+        
+          <link rel="shortcut icon" href="/blog/images/myicon.ico">
+        
+      
+      
+        
+          <link rel="icon" type="image/png" href="/blog/images/myicon-192x192.png" sizes="192x192">
+        
+      
+      
+        
+          <link rel="apple-touch-icon" sizes="180x180" href="/blog/images/apple-touch-myicon.png">
+        
+      
+    
+    <!-- title -->
+    <title>Conda宇宙</title>
+    <!-- styles -->
+    
+<link rel="stylesheet" href="/blog/css/style.css">
+
+    <!-- persian styles -->
+    
+    <!-- rss -->
+    
+    
+      <link rel="alternate" href="/blog/true" title="IRIA&#39;s reflektor" type="application/atom+xml" />
+    
+	<!-- mathjax -->
+	
+		<script type="text/x-mathjax-config">
+		  MathJax.Hub.Config({
+			tex2jax: {
+			  skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+			  inlineMath: [['$','$']]
+			}
+		  });
+		</script>
+		<script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-MML-AM_CHTML' async></script>
+	
+<meta name="generator" content="Hexo 6.2.0"></head>
+
+<body class="max-width mx-auto px3 ltr">
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#" aria-label="Menu"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#" aria-label="Menu"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" aria-label="Top" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fas fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+        <!--
+       --><li><a href="/blog/">Home</a></li><!--
+     --><!--
+       --><li><a href="/blog/about/">About</a></li><!--
+     --><!--
+       --><li><a href="/blog/archives/">Archives</a></li><!--
+     --><!--
+       --><li><a href="/blog/links/">Links</a></li><!--
+     --><!--
+       --><li><a href="/blog/search/">Search</a></li><!--
+     -->
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        <li><a class="icon" aria-label="Previous post" href="/blog/2024/12/18/%E6%88%91%E7%9A%84%E5%B7%A5%E4%BD%9C%E6%B5%81/"><i class="fas fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
+        
+        
+        <li><a class="icon" aria-label="Next post" href="/blog/2022/10/29/Pytorch%E4%BB%8E%E5%85%A5%E9%97%A8%E5%88%B0%E5%85%A5%E9%97%A8/"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" aria-label="Back to top" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" aria-label="Share post" href="#"><i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">Previous post</span>
+      <span id="i-next" class="info" style="display:none;">Next post</span>
+      <span id="i-top" class="info" style="display:none;">Back to top</span>
+      <span id="i-share" class="info" style="display:none;">Share post</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=https://hiyoiria.github.io/blog/2022/10/29/Conda%E5%AE%87%E5%AE%99/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=https://hiyoiria.github.io/blog/2022/10/29/Conda%E5%AE%87%E5%AE%99/&text=Conda宇宙"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=https://hiyoiria.github.io/blog/2022/10/29/Conda%E5%AE%87%E5%AE%99/&title=Conda宇宙"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=https://hiyoiria.github.io/blog/2022/10/29/Conda%E5%AE%87%E5%AE%99/&is_video=false&description=Conda宇宙"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=Conda宇宙&body=Check out this article: https://hiyoiria.github.io/blog/2022/10/29/Conda%E5%AE%87%E5%AE%99/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=https://hiyoiria.github.io/blog/2022/10/29/Conda%E5%AE%87%E5%AE%99/&title=Conda宇宙"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=https://hiyoiria.github.io/blog/2022/10/29/Conda%E5%AE%87%E5%AE%99/&title=Conda宇宙"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=https://hiyoiria.github.io/blog/2022/10/29/Conda%E5%AE%87%E5%AE%99/&title=Conda宇宙"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=https://hiyoiria.github.io/blog/2022/10/29/Conda%E5%AE%87%E5%AE%99/&title=Conda宇宙"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=https://hiyoiria.github.io/blog/2022/10/29/Conda%E5%AE%87%E5%AE%99/&name=Conda宇宙&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=https://hiyoiria.github.io/blog/2022/10/29/Conda%E5%AE%87%E5%AE%99/&t=Conda宇宙"><i class="fab fa-hacker-news " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    <div id="toc">
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Jupyter%E7%9B%B8%E5%85%B3"><span class="toc-number">1.</span> <span class="toc-text">Jupyter相关</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%A6%82%E4%BD%95%E5%88%87%E7%8E%AF%E5%A2%83"><span class="toc-number">1.1.</span> <span class="toc-text">如何切环境</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E4%BA%9B%E5%BF%AB%E6%8D%B7%E9%94%AE"><span class="toc-number">1.2.</span> <span class="toc-text">一些快捷键</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%89%A7%E8%A1%8Ccell"><span class="toc-number">1.2.1.</span> <span class="toc-text">执行cell</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8F%92%E5%85%A5%E5%8D%95%E5%85%83%E6%A0%BC"><span class="toc-number">1.2.2.</span> <span class="toc-text">插入单元格</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%A0%E9%99%A4%E5%8D%95%E5%85%83%E6%A0%BC"><span class="toc-number">1.2.3.</span> <span class="toc-text">删除单元格</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%80%89%E6%8B%A9cell"><span class="toc-number">1.2.4.</span> <span class="toc-text">选择cell</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%90%88%E5%B9%B6%E3%80%81%E5%88%86%E5%89%B2cell"><span class="toc-number">1.2.5.</span> <span class="toc-text">合并、分割cell</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%B6%E4%BB%96"><span class="toc-number">1.2.6.</span> <span class="toc-text">其他</span></a></li></ol></li></ol></li></ol>
+    </div>
+  </span>
+</div>
+
+    
+    <div class="content index py4">
+        
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle" itemprop="name headline">
+        Conda宇宙
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span itemprop="name">Hiyoiria</span>
+      </span>
+      
+    <div class="postdate">
+      
+        <time datetime="2022-10-30T02:25:49.000Z" itemprop="datePublished">2022-10-29</time>
+        
+      
+    </div>
+
+
+      
+
+      
+
+    </div>
+  </header>
+  
+
+  <div class="content" itemprop="articleBody">
+    <h1 id="Jupyter相关"><a href="#Jupyter相关" class="headerlink" title="Jupyter相关"></a>Jupyter相关</h1><h2 id="如何切环境"><a href="#如何切环境" class="headerlink" title="如何切环境"></a>如何切环境</h2><p>看到有用<a target="_blank" rel="noopener" href="https://blog.csdn.net/com_fang_bean/article/details/107980056?spm=1001.2101.3001.6661.1&utm_medium=distribute.pc_relevant_t0.none-task-blog-2~default~CTRLIST~Rate-1-107980056-blog-123313239.pc_relevant_multi_platform_whitelistv4&depth_1-utm_source=distribute.pc_relevant_t0.none-task-blog-2~default~CTRLIST~Rate-1-107980056-blog-123313239.pc_relevant_multi_platform_whitelistv4&utm_relevant_index=1">代码激活环境啥的</a></p>
+<p>但是最后实测是在conda的面板处，在当前要使用的环境下安装Jupyter，就能得到一个例如<code>Jupyter(Pytorch)</code>的选项</p>
+<h2 id="一些快捷键"><a href="#一些快捷键" class="headerlink" title="一些快捷键"></a>一些快捷键</h2><h3 id="执行cell"><a href="#执行cell" class="headerlink" title="执行cell"></a>执行cell</h3><ul>
+<li><p><code>Ctrl + Enter</code>: 执行该单元格的代码</p>
+</li>
+<li><p><code>Shift + Enter</code>: 执行该单元格代码，并跳到下方单元格，如果下方没有单元格则新建一个单元格</p>
+</li>
+<li><p><code>Alt+ Enter</code>: 执行该单元格代码，并在下方插入一个单元格，无论下方原来有没有单元格。</p>
+</li>
+</ul>
+<h3 id="插入单元格"><a href="#插入单元格" class="headerlink" title="插入单元格"></a>插入单元格</h3><ul>
+<li><code>ESC + A</code>: 在单元格上方插入一个新单元格</li>
+<li><code>ESC + B</code>: 在单元格下方插入一个新单元格</li>
+</ul>
+<h3 id="删除单元格"><a href="#删除单元格" class="headerlink" title="删除单元格"></a>删除单元格</h3><ul>
+<li><p><code>ESC + D + D</code>，删除当前单元</p>
+</li>
+<li><p><code>ESC + Z</code>，恢复删除的最后一个单元</p>
+</li>
+</ul>
+<h3 id="选择cell"><a href="#选择cell" class="headerlink" title="选择cell"></a>选择cell</h3><ul>
+<li><code>Shift + J 或 Shift + Down</code>: 选择向下的下一个cell（可多选）</li>
+<li><code>Shift + K 或 Shift + Up</code>: 选择向上的cell（可多选）</li>
+</ul>
+<h3 id="合并、分割cell"><a href="#合并、分割cell" class="headerlink" title="合并、分割cell"></a>合并、分割cell</h3><ul>
+<li><code>Shift + M</code>: 合并选中的单元格</li>
+<li><code>Ctrl + Shift + -</code>: 分割cell中鼠标所在的位置</li>
+</ul>
+<h3 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h3><ul>
+<li><code>Tab</code>: 代码补全</li>
+<li><code>command + B</code>: 展示文件列表区域</li>
+</ul>
+
+  </div>
+</article>
+
+
+
+        
+          <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/blog/">Home</a></li>
+         
+          <li><a href="/blog/about/">About</a></li>
+         
+          <li><a href="/blog/archives/">Archives</a></li>
+         
+          <li><a href="/blog/links/">Links</a></li>
+         
+          <li><a href="/blog/search/">Search</a></li>
+        
+      </ul>
+    </div>
+
+    <div id="toc-footer" style="display: none">
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Jupyter%E7%9B%B8%E5%85%B3"><span class="toc-number">1.</span> <span class="toc-text">Jupyter相关</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%A6%82%E4%BD%95%E5%88%87%E7%8E%AF%E5%A2%83"><span class="toc-number">1.1.</span> <span class="toc-text">如何切环境</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E4%BA%9B%E5%BF%AB%E6%8D%B7%E9%94%AE"><span class="toc-number">1.2.</span> <span class="toc-text">一些快捷键</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%89%A7%E8%A1%8Ccell"><span class="toc-number">1.2.1.</span> <span class="toc-text">执行cell</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8F%92%E5%85%A5%E5%8D%95%E5%85%83%E6%A0%BC"><span class="toc-number">1.2.2.</span> <span class="toc-text">插入单元格</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%A0%E9%99%A4%E5%8D%95%E5%85%83%E6%A0%BC"><span class="toc-number">1.2.3.</span> <span class="toc-text">删除单元格</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%80%89%E6%8B%A9cell"><span class="toc-number">1.2.4.</span> <span class="toc-text">选择cell</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%90%88%E5%B9%B6%E3%80%81%E5%88%86%E5%89%B2cell"><span class="toc-number">1.2.5.</span> <span class="toc-text">合并、分割cell</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%B6%E4%BB%96"><span class="toc-number">1.2.6.</span> <span class="toc-text">其他</span></a></li></ol></li></ol></li></ol>
+    </div>
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=https://hiyoiria.github.io/blog/2022/10/29/Conda%E5%AE%87%E5%AE%99/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=https://hiyoiria.github.io/blog/2022/10/29/Conda%E5%AE%87%E5%AE%99/&text=Conda宇宙"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=https://hiyoiria.github.io/blog/2022/10/29/Conda%E5%AE%87%E5%AE%99/&title=Conda宇宙"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=https://hiyoiria.github.io/blog/2022/10/29/Conda%E5%AE%87%E5%AE%99/&is_video=false&description=Conda宇宙"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=Conda宇宙&body=Check out this article: https://hiyoiria.github.io/blog/2022/10/29/Conda%E5%AE%87%E5%AE%99/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=https://hiyoiria.github.io/blog/2022/10/29/Conda%E5%AE%87%E5%AE%99/&title=Conda宇宙"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=https://hiyoiria.github.io/blog/2022/10/29/Conda%E5%AE%87%E5%AE%99/&title=Conda宇宙"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=https://hiyoiria.github.io/blog/2022/10/29/Conda%E5%AE%87%E5%AE%99/&title=Conda宇宙"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=https://hiyoiria.github.io/blog/2022/10/29/Conda%E5%AE%87%E5%AE%99/&title=Conda宇宙"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=https://hiyoiria.github.io/blog/2022/10/29/Conda%E5%AE%87%E5%AE%99/&name=Conda宇宙&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=https://hiyoiria.github.io/blog/2022/10/29/Conda%E5%AE%87%E5%AE%99/&t=Conda宇宙"><i class="fab fa-hacker-news fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fas fa-bars fa-lg" aria-hidden="true"></i> Menu</a>
+        <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fas fa-list fa-lg" aria-hidden="true"></i> TOC</a>
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fas fa-share-alt fa-lg" aria-hidden="true"></i> Share</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a>
+    </div>
+
+  </div>
+</div>
+
+        
+        <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy;
+    
+    
+    2017-2024
+    Hiyoiria
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+        <!--
+       --><li><a href="/blog/">Home</a></li><!--
+     --><!--
+       --><li><a href="/blog/about/">About</a></li><!--
+     --><!--
+       --><li><a href="/blog/archives/">Archives</a></li><!--
+     --><!--
+       --><li><a href="/blog/links/">Links</a></li><!--
+     --><!--
+       --><li><a href="/blog/search/">Search</a></li><!--
+     -->
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+    </div>
+    <!-- styles -->
+
+
+
+  <link rel="preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" crossorigin="anonymous" onload="this.onload=null;this.rel='stylesheet'"/>
+
+
+    <!-- jquery -->
+ 
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" crossorigin="anonymous"></script> 
+
+
+
+
+<!-- clipboard -->
+
+  
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.7/clipboard.min.js" crossorigin="anonymous"></script> 
+  
+  <script type="text/javascript">
+  $(function() {
+    // copy-btn HTML
+    var btn = "<span class=\"btn-copy tooltipped tooltipped-sw\" aria-label=\"Copy to clipboard!\">";
+    btn += '<i class="far fa-clone"></i>';
+    btn += '</span>'; 
+    // mount it!
+    $(".highlight table").before(btn);
+    var clip = new ClipboardJS('.btn-copy', {
+      text: function(trigger) {
+        return Array.from(trigger.nextElementSibling.querySelectorAll('.code')).reduce((str,it)=>str+it.innerText+'\n','')
+      }
+    });
+    clip.on('success', function(e) {
+      e.trigger.setAttribute('aria-label', "Copied!");
+      e.clearSelection();
+    })
+  })
+  </script>
+
+
+<script src="/blog/js/main.js"></script>
+
+<!-- search -->
+
+<!-- Google Analytics -->
+
+<!-- Baidu Analytics -->
+
+<!-- Cloudflare Analytics -->
+
+<!-- Umami Analytics -->
+
+<!-- Disqus Comments -->
+
+<!-- utterances Comments -->
+
+</body>
+</html>

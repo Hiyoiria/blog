@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang=en>
+<head>
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
+    <meta name="description" content="T1 疾病管理裸得不能再裸的状压dp 不过数据范围骗人考试时k&#x3D;&#x3D;0的点没过 我也很无奈呀qwq 12345678910111213141516171819202122232425262728293031323334353637383940414243444546#include&lt;iostream&gt;#include&lt;cstdio&gt;#include&lt;">
+<meta property="og:type" content="article">
+<meta property="og:title" content="公牛与状压dp">
+<meta property="og:url" content="https://hiyoiria.github.io/blog/2017/02/24/%E5%85%AC%E7%89%9B%E4%B8%8E%E7%8A%B6%E5%8E%8Bdp/index.html">
+<meta property="og:site_name" content="IRIA&#39;s reflektor">
+<meta property="og:description" content="T1 疾病管理裸得不能再裸的状压dp 不过数据范围骗人考试时k&#x3D;&#x3D;0的点没过 我也很无奈呀qwq 12345678910111213141516171819202122232425262728293031323334353637383940414243444546#include&lt;iostream&gt;#include&lt;cstdio&gt;#include&lt;">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2017-02-24T16:00:00.000Z">
+<meta property="article:modified_time" content="2022-05-28T07:19:10.969Z">
+<meta property="article:author" content="Hiyoiria">
+<meta name="twitter:card" content="summary">
+    
+    
+      
+        
+          <link rel="shortcut icon" href="/blog/images/myicon.ico">
+        
+      
+      
+        
+          <link rel="icon" type="image/png" href="/blog/images/myicon-192x192.png" sizes="192x192">
+        
+      
+      
+        
+          <link rel="apple-touch-icon" sizes="180x180" href="/blog/images/apple-touch-myicon.png">
+        
+      
+    
+    <!-- title -->
+    <title>公牛与状压dp</title>
+    <!-- styles -->
+    
+<link rel="stylesheet" href="/blog/css/style.css">
+
+    <!-- persian styles -->
+    
+    <!-- rss -->
+    
+    
+      <link rel="alternate" href="/blog/true" title="IRIA&#39;s reflektor" type="application/atom+xml" />
+    
+	<!-- mathjax -->
+	
+		<script type="text/x-mathjax-config">
+		  MathJax.Hub.Config({
+			tex2jax: {
+			  skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+			  inlineMath: [['$','$']]
+			}
+		  });
+		</script>
+		<script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-MML-AM_CHTML' async></script>
+	
+<meta name="generator" content="Hexo 6.2.0"></head>
+
+<body class="max-width mx-auto px3 ltr">
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#" aria-label="Menu"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#" aria-label="Menu"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" aria-label="Top" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fas fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+        <!--
+       --><li><a href="/blog/">Home</a></li><!--
+     --><!--
+       --><li><a href="/blog/about/">About</a></li><!--
+     --><!--
+       --><li><a href="/blog/archives/">Archives</a></li><!--
+     --><!--
+       --><li><a href="/blog/links/">Links</a></li><!--
+     --><!--
+       --><li><a href="/blog/search/">Search</a></li><!--
+     -->
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        <li><a class="icon" aria-label="Previous post" href="/blog/2018/02/24/hello_there/"><i class="fas fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
+        
+        
+        <li><a class="icon" aria-label="Next post" href="/blog/2017/02/21/%E5%85%AB%E6%95%B0%E7%A0%81%E9%9A%BE%E9%A2%98/"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" aria-label="Back to top" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" aria-label="Share post" href="#"><i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">Previous post</span>
+      <span id="i-next" class="info" style="display:none;">Next post</span>
+      <span id="i-top" class="info" style="display:none;">Back to top</span>
+      <span id="i-share" class="info" style="display:none;">Share post</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=https://hiyoiria.github.io/blog/2017/02/24/%E5%85%AC%E7%89%9B%E4%B8%8E%E7%8A%B6%E5%8E%8Bdp/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=https://hiyoiria.github.io/blog/2017/02/24/%E5%85%AC%E7%89%9B%E4%B8%8E%E7%8A%B6%E5%8E%8Bdp/&text=公牛与状压dp"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=https://hiyoiria.github.io/blog/2017/02/24/%E5%85%AC%E7%89%9B%E4%B8%8E%E7%8A%B6%E5%8E%8Bdp/&title=公牛与状压dp"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=https://hiyoiria.github.io/blog/2017/02/24/%E5%85%AC%E7%89%9B%E4%B8%8E%E7%8A%B6%E5%8E%8Bdp/&is_video=false&description=公牛与状压dp"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=公牛与状压dp&body=Check out this article: https://hiyoiria.github.io/blog/2017/02/24/%E5%85%AC%E7%89%9B%E4%B8%8E%E7%8A%B6%E5%8E%8Bdp/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=https://hiyoiria.github.io/blog/2017/02/24/%E5%85%AC%E7%89%9B%E4%B8%8E%E7%8A%B6%E5%8E%8Bdp/&title=公牛与状压dp"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=https://hiyoiria.github.io/blog/2017/02/24/%E5%85%AC%E7%89%9B%E4%B8%8E%E7%8A%B6%E5%8E%8Bdp/&title=公牛与状压dp"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=https://hiyoiria.github.io/blog/2017/02/24/%E5%85%AC%E7%89%9B%E4%B8%8E%E7%8A%B6%E5%8E%8Bdp/&title=公牛与状压dp"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=https://hiyoiria.github.io/blog/2017/02/24/%E5%85%AC%E7%89%9B%E4%B8%8E%E7%8A%B6%E5%8E%8Bdp/&title=公牛与状压dp"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=https://hiyoiria.github.io/blog/2017/02/24/%E5%85%AC%E7%89%9B%E4%B8%8E%E7%8A%B6%E5%8E%8Bdp/&name=公牛与状压dp&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=https://hiyoiria.github.io/blog/2017/02/24/%E5%85%AC%E7%89%9B%E4%B8%8E%E7%8A%B6%E5%8E%8Bdp/&t=公牛与状压dp"><i class="fab fa-hacker-news " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    <div id="toc">
+      <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%80%BB%E7%BB%93%EF%BC%9A"><span class="toc-number">1.</span> <span class="toc-text">总结：</span></a></li></ol>
+    </div>
+  </span>
+</div>
+
+    
+    <div class="content index py4">
+        
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle" itemprop="name headline">
+        公牛与状压dp
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span itemprop="name">Hiyoiria</span>
+      </span>
+      
+    <div class="postdate">
+      
+        <time datetime="2017-02-24T16:00:00.000Z" itemprop="datePublished">2017-02-24</time>
+        
+      
+    </div>
+
+
+      
+
+      
+
+    </div>
+  </header>
+  
+
+  <div class="content" itemprop="articleBody">
+    <p>T1 疾病管理<br>裸得不能再裸的状压dp 不过数据范围骗人<br>考试时k&#x3D;&#x3D;0的点没过 我也很无奈呀qwq</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line">#include&lt;iostream&gt;</span><br><span class="line">#include&lt;cstdio&gt;</span><br><span class="line">#include&lt;cstdlib&gt;</span><br><span class="line">#include&lt;cstring&gt;</span><br><span class="line">#include&lt;algorithm&gt;</span><br><span class="line">#include&lt;string&gt;</span><br><span class="line">using namespace std;</span><br><span class="line">int g[2000],f[1&lt;&lt;17];</span><br><span class="line">int pd(int x)&#123;</span><br><span class="line">	int tot=0;</span><br><span class="line">	while (x)&#123;</span><br><span class="line">		if (x&amp;1) tot++;</span><br><span class="line">		x&gt;&gt;=1;</span><br><span class="line">	&#125;</span><br><span class="line">	return tot;</span><br><span class="line">&#125;</span><br><span class="line">int main()&#123;</span><br><span class="line">	freopen (&quot;disease.in&quot;,&quot;r&quot;,stdin);</span><br><span class="line">	freopen (&quot;disease.out&quot;,&quot;w&quot;,stdout);</span><br><span class="line">	int n,d,k,sum=0;</span><br><span class="line">	scanf (&quot;%d%d%d&quot;,&amp;n,&amp;d,&amp;k);</span><br><span class="line">	for (int i=1;i&lt;=n;++i)&#123;</span><br><span class="line">		int x,y;</span><br><span class="line">		scanf (&quot;%d&quot;,&amp;x);</span><br><span class="line">		if (x==0) sum++;</span><br><span class="line">		for (int j=1;j&lt;=x;++j)&#123;</span><br><span class="line">			scanf (&quot;%d&quot;,&amp;y);</span><br><span class="line">		    g[i]|=(1&lt;&lt;y-1);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	for (int i=1;i&lt;(1&lt;&lt;d);++i)</span><br><span class="line">	&#123;</span><br><span class="line">		if (pd(i)&lt;=k)</span><br><span class="line">			for (int j=1;j&lt;=n;++j)&#123;</span><br><span class="line">				if (g[j]&amp;(~(g[j]&amp;i))) continue;</span><br><span class="line">				//如果这个公牛的疾病未完全被包含在此状态中 就跳过</span><br><span class="line">				f[i]++;</span><br><span class="line">			&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	int ans=0;</span><br><span class="line">	for (int i=1;i&lt;(1&lt;&lt;d);++i) ans=max(ans,f[i]);</span><br><span class="line">	if (k==0) ans=max(ans,sum);</span><br><span class="line">	cout&lt;&lt;ans;</span><br><span class="line">	return 0;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>T2 安排公牛<br>考场上玄学dfs胡乱搞到70<br>然而大家似乎都是随手就80了（无奈脸x2<br>看到&lt;&#x3D;20的友好范围想着要状压 然而 越想越复杂了（老毛病<br>正解依旧dp<br>要注意0也是一种状态 对 什么都不放也是一种状态qwq<br><del>大概就是类似于“无即万物“的思想</del><br>感谢超级厉害的csy大佬不嫌我蠢跟我讲了几遍</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line">#include&lt;iostream&gt;</span><br><span class="line">#include&lt;cstdio&gt;</span><br><span class="line">#include&lt;cstdlib&gt;</span><br><span class="line">#include&lt;cstring&gt;</span><br><span class="line">#include&lt;algorithm&gt;</span><br><span class="line">#include&lt;string&gt;</span><br><span class="line">#define ll long long</span><br><span class="line">using namespace std;</span><br><span class="line">int x[30][30];</span><br><span class="line">int dp[1&lt;&lt;20];</span><br><span class="line">int n,m,ans=0;</span><br><span class="line">int main()&#123;</span><br><span class="line">		freopen (&quot;examnine.in&quot;,&quot;r&quot;,stdin);</span><br><span class="line">		freopen (&quot;examnine.out&quot;,&quot;w&quot;,stdout);</span><br><span class="line">	scanf (&quot;%d%d&quot;,&amp;n,&amp;m);</span><br><span class="line">	int sum=0;</span><br><span class="line">	for (int i=1;i&lt;=n;++i)&#123;</span><br><span class="line">		int xx,y;</span><br><span class="line">		scanf (&quot;%d&quot;,&amp;xx);</span><br><span class="line">		for (int j=1;j&lt;=xx;++j)&#123;</span><br><span class="line">			scanf (&quot;%d&quot;,&amp;y);</span><br><span class="line">			x[i][y]=1;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	dp[0]=1;</span><br><span class="line">	for (int i=1;i&lt;=n;++i)</span><br><span class="line">		for (int j=(1&lt;&lt;m)-1;j&gt;=0;--j)&#123;</span><br><span class="line">			if (!dp[j]) continue;</span><br><span class="line">			for (int k=1;k&lt;=m;++k)&#123;</span><br><span class="line">				if (!x[i][k]) continue;</span><br><span class="line">				if (j&amp;(1&lt;&lt;k-1)) continue;</span><br><span class="line">				dp[j|(1&lt;&lt;k-1)]+=dp[j];</span><br><span class="line">			&#125;</span><br><span class="line">			dp[j]=0;</span><br><span class="line">		&#125;</span><br><span class="line">	for (int i=0;i&lt;=(1&lt;&lt;m)-1;++i) ans+=dp[i];</span><br><span class="line">	cout&lt;&lt;ans;</span><br><span class="line">	return 0;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="总结："><a href="#总结：" class="headerlink" title="总结："></a>总结：</h4><p>以后碰到感觉不怎么好打的dp<br>一定要认真分析时间复杂度<br>敢于dfs（逃</p>
+
+  </div>
+</article>
+
+
+
+        
+          <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/blog/">Home</a></li>
+         
+          <li><a href="/blog/about/">About</a></li>
+         
+          <li><a href="/blog/archives/">Archives</a></li>
+         
+          <li><a href="/blog/links/">Links</a></li>
+         
+          <li><a href="/blog/search/">Search</a></li>
+        
+      </ul>
+    </div>
+
+    <div id="toc-footer" style="display: none">
+      <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%80%BB%E7%BB%93%EF%BC%9A"><span class="toc-number">1.</span> <span class="toc-text">总结：</span></a></li></ol>
+    </div>
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=https://hiyoiria.github.io/blog/2017/02/24/%E5%85%AC%E7%89%9B%E4%B8%8E%E7%8A%B6%E5%8E%8Bdp/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=https://hiyoiria.github.io/blog/2017/02/24/%E5%85%AC%E7%89%9B%E4%B8%8E%E7%8A%B6%E5%8E%8Bdp/&text=公牛与状压dp"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=https://hiyoiria.github.io/blog/2017/02/24/%E5%85%AC%E7%89%9B%E4%B8%8E%E7%8A%B6%E5%8E%8Bdp/&title=公牛与状压dp"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=https://hiyoiria.github.io/blog/2017/02/24/%E5%85%AC%E7%89%9B%E4%B8%8E%E7%8A%B6%E5%8E%8Bdp/&is_video=false&description=公牛与状压dp"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=公牛与状压dp&body=Check out this article: https://hiyoiria.github.io/blog/2017/02/24/%E5%85%AC%E7%89%9B%E4%B8%8E%E7%8A%B6%E5%8E%8Bdp/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=https://hiyoiria.github.io/blog/2017/02/24/%E5%85%AC%E7%89%9B%E4%B8%8E%E7%8A%B6%E5%8E%8Bdp/&title=公牛与状压dp"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=https://hiyoiria.github.io/blog/2017/02/24/%E5%85%AC%E7%89%9B%E4%B8%8E%E7%8A%B6%E5%8E%8Bdp/&title=公牛与状压dp"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=https://hiyoiria.github.io/blog/2017/02/24/%E5%85%AC%E7%89%9B%E4%B8%8E%E7%8A%B6%E5%8E%8Bdp/&title=公牛与状压dp"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=https://hiyoiria.github.io/blog/2017/02/24/%E5%85%AC%E7%89%9B%E4%B8%8E%E7%8A%B6%E5%8E%8Bdp/&title=公牛与状压dp"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=https://hiyoiria.github.io/blog/2017/02/24/%E5%85%AC%E7%89%9B%E4%B8%8E%E7%8A%B6%E5%8E%8Bdp/&name=公牛与状压dp&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=https://hiyoiria.github.io/blog/2017/02/24/%E5%85%AC%E7%89%9B%E4%B8%8E%E7%8A%B6%E5%8E%8Bdp/&t=公牛与状压dp"><i class="fab fa-hacker-news fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fas fa-bars fa-lg" aria-hidden="true"></i> Menu</a>
+        <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fas fa-list fa-lg" aria-hidden="true"></i> TOC</a>
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fas fa-share-alt fa-lg" aria-hidden="true"></i> Share</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a>
+    </div>
+
+  </div>
+</div>
+
+        
+        <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy;
+    
+    
+    2017-2024
+    Hiyoiria
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+        <!--
+       --><li><a href="/blog/">Home</a></li><!--
+     --><!--
+       --><li><a href="/blog/about/">About</a></li><!--
+     --><!--
+       --><li><a href="/blog/archives/">Archives</a></li><!--
+     --><!--
+       --><li><a href="/blog/links/">Links</a></li><!--
+     --><!--
+       --><li><a href="/blog/search/">Search</a></li><!--
+     -->
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+    </div>
+    <!-- styles -->
+
+
+
+  <link rel="preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" crossorigin="anonymous" onload="this.onload=null;this.rel='stylesheet'"/>
+
+
+    <!-- jquery -->
+ 
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" crossorigin="anonymous"></script> 
+
+
+
+
+<!-- clipboard -->
+
+  
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.7/clipboard.min.js" crossorigin="anonymous"></script> 
+  
+  <script type="text/javascript">
+  $(function() {
+    // copy-btn HTML
+    var btn = "<span class=\"btn-copy tooltipped tooltipped-sw\" aria-label=\"Copy to clipboard!\">";
+    btn += '<i class="far fa-clone"></i>';
+    btn += '</span>'; 
+    // mount it!
+    $(".highlight table").before(btn);
+    var clip = new ClipboardJS('.btn-copy', {
+      text: function(trigger) {
+        return Array.from(trigger.nextElementSibling.querySelectorAll('.code')).reduce((str,it)=>str+it.innerText+'\n','')
+      }
+    });
+    clip.on('success', function(e) {
+      e.trigger.setAttribute('aria-label', "Copied!");
+      e.clearSelection();
+    })
+  })
+  </script>
+
+
+<script src="/blog/js/main.js"></script>
+
+<!-- search -->
+
+<!-- Google Analytics -->
+
+<!-- Baidu Analytics -->
+
+<!-- Cloudflare Analytics -->
+
+<!-- Umami Analytics -->
+
+<!-- Disqus Comments -->
+
+<!-- utterances Comments -->
+
+</body>
+</html>
